@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\PanierController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -29,16 +30,20 @@ Route::get('/', function () {
 
 
 Route::get('test', function () {
-    return view('layouts.app');
+    return view('test');
 });
 
 Route::get('show-magie', function () {
     return view('app');
 });
 
+//Route::get('/home/{id}/panier', [HomeController::class, 'givePanier'])->name('showPanier');
+
 Route::resource('users', UserController::class);
 
 Route::resource('articles', ArticleController::class);
+
+Route::resource('panier', PanierController::class);
 
 Auth::routes();
 

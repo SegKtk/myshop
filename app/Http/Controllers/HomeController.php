@@ -30,4 +30,9 @@ class HomeController extends Controller
         return view('home');
     }
 
+    /*public function showPanier($id){
+
+        return view('panier');
+    }*/
+
 }

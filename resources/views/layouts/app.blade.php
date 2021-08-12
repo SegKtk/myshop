@@ -31,7 +31,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-light  bg-primary bg-gradient shadow-sm fixed-top " style="height: 1.5cm">
             <div class="container container bg-primary  bg-gradient">
-                <a class="navbar-brand " href="{{ url('/') }}" style="font-family: 'Zen Tokyo Zoo';">
+                <a class="navbar-brand  bg-transparent" href="{{ url('/') }}" style="font-family: 'Zen Tokyo Zoo';">
                     {{ config('app.name') }}
                 </a>
                 <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +66,7 @@
                     </ul>
                     @auth
                         <strong href="#" class="active text-dark">
-                            <i class="fa fa-user"></i>  {{ _('Bienvenue,')}}{{ Auth::user()->nom }}
+                            <i class="fa fa-user">{{ _('Bienvenue,')}}{{ Auth::user()->nom }}</i>
                         </strong>
 
                         <form  id="logout-form" action="{{ route('logout') }}" method="POST">
@@ -75,9 +75,18 @@
                         <a class="btn"
                             href="{{ route('logout') }}"
                             onclick="event.preventDefault(); this.previousElementSibling.submit();">
-                            <i class="nav-icon fas fa-sign-out-alt "></i>
+                            <i class="nav-icon fas fa-sign-out-alt ">Logout</i>
                         </a>
-                        <a class="btn" href="#"><i class="nav-icon fas fa-shopping-cart w-100 h-100"></i></a>
+                       {{-- <a class="btn" href="#"><i class="nav-icon fas fa-shopping-cart"></i></a> --}}
+
+                       <a href="{{ route('panier.show',['panier' => Auth::user()->id]) }} ">
+                       <button type="button" class="btn btn-dark position-relative" >
+                            <i class="nav-icon fas fa-shopping-cart"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                0
+                            </span>
+                        </button>
+                        </a>
 
 
                     @else
