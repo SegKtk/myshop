@@ -27,7 +27,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $articles = DB::select('select * from articles');
+
+        return view('home', compact('articles'));
     }
 
     /*public function showPanier($id){

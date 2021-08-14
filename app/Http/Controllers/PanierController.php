@@ -50,10 +50,14 @@ class PanierController extends Controller
         $panier = DB::table('paniers')
             ->where('id',$id)
             ->count();
+        $panier_articles = DB::table('paniers')
+            ->where('id', $id);
 
         return view('panier', compact('panier'));
 
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -84,8 +88,12 @@ class PanierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function addArticle($id_article, $id_user)
     {
-        //
+        DB::insert('insert into paniers (id_users, id_articles, quantite) values (?, ?)', [$id_user, $id_article], 1);
+        
+        return view('panier');
     }
+
+
 }

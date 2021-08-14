@@ -26,7 +26,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body style="background-color: rgb(225, 231, 231);">
 
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-light  bg-primary bg-gradient shadow-sm fixed-top " style="height: 1.5cm">

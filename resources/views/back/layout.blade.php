@@ -42,22 +42,22 @@
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{ route('home') }}" class="nav-link">@lang('Acceuil-Site')</a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <form action="{{ route('logout') }}" method="POST" hidden>
-                @csrf
-                </form>
-                <a class="nav-link"
-                    href="{{ route('logout') }}"
-                    onclick="event.preventDefault(); this.previousElementSibling.submit();">
-                    @lang('Déconnexion')
-                </a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ route('home') }}" class="nav-link">@lang('Acceuil-Site')</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <form action="{{ route('logout') }}" method="POST" hidden>
+                    @csrf
+                    </form>
+                    <a class="nav-link"
+                        href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); this.previousElementSibling.submit();">
+                        @lang('Déconnexion')
+                    </a>
+                </li>
             </ul>
 
         </nav>

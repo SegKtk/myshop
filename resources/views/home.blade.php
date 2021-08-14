@@ -1,27 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-{{--
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('Bienvenue sur notre plateforme de e-commerce!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
---}}
 <nav style="margin-top: 1cm; " class="border-top border-dark">
     <div class="nav nav-tabs" id="nav-tab" role="tablist" style="background-color: #8eb0f0de;">
         <button class="nav-link active text-primary fw-bold " id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Tous</button>
@@ -47,7 +27,7 @@
             </div>
         </div>
         <div class="carousel-item">
-            <img src="{{ asset('storage/articles/91.jpg')}}" class="d-block img-fluid" alt="...">
+            <img src="{{ asset('storage/articles/01.jpg')}}" class="d-block img-fluid" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h2 class=" bg-dark text-white">Second slide label</h2>
                 <p>Some representative placeholder content for the first slide.</p>
@@ -70,68 +50,40 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
-<br>
+
 {{--#########################################################################--}}
 <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-        <div class="container container-md container-fluid">
-            <div class="row row-cols-4">
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header"><img src="{{ asset('storage/articles/01.jpg')}}" class="img-fluid" alt="..."></div>
+        <div class="row row-cols-3 row-cols-md-5 g-2 p-1"  >
+                @foreach ($articles as $article)
+                    <div class="col">
+                    <div class="card h-100 border-top border-top-1 bg-light">
+                        <img src="{{ $article->photo1}}" class="card-img-top img-fluid" style="height: 15rem;"  alt="image d'article">
                         <div class="card-body">
-                            bien
-                        </div>
-                        <div class=" card-footer">
-                            bb
+                            <h5 class="card-title">{{ $article->nom }}</h5>
+
+                            <div class="card-text">
+                                <ul>
+                                    <li>Prix : {{ $article->prix }} FCFA</li>
+                                    <li>{{ $article->qte_stock }} restants</li>
+                                </ul>
+                            </div>
+                            <hr>
+                            <div class="card-footer" style="margin-bottom: 0px;">
+                                @auth
+                                    <div class="btn btn-warning"><i class="fa fa-cart-plus"></i></div>
+                                @endauth
+
+                                <div class="btn btn-primary">Voir plus >></div>
+                            </div>
+
+
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header"><img src="{{ asset('storage/articles/01.jpg')}}" class="img-fluid" alt="..."></div>
-                        <div class="card-body">
-                            bien
-                        </div>
-                        <div class=" card-footer">
-                            bb
-                        </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header"><img src="{{ asset('storage/articles/01.jpg')}}" class="img-fluid" alt="..."></div>
-                        <div class="card-body">
-                            bien
-                        </div>
-                        <div class=" card-footer">
-                            bb
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header"><img src="{{ asset('storage/articles/01.jpg')}}" class="img-fluid" alt="..."></div>
-                        <div class="card-body">
-                            bien
-                        </div>
-                        <div class=" card-footer">
-                            bb
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header"><img src="{{ asset('storage/articles/01.jpg')}}" class="img-fluid" alt="..."></div>
-                        <div class="card-body">
-                            bien
-                        </div>
-                        <div class=" card-footer">
-                            bb
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+                @endforeach
+
         </div>
     </div>
 
@@ -148,5 +100,10 @@
     </div>
 
 </div>
-{{ __('Bienvenue sur notre plateforme de e-commerce!') }}
+
+
+{{--################################MODAL####################################--}}
+
+
+
 @endsection
