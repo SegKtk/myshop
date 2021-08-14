@@ -24,7 +24,9 @@ use App\Http\Controllers\PhotoController;
 Route::get('/', [App\Http\Controllers\AccueilController::class, 'index']);
 
 //Route::get('panier/{id_user}/add/{')
-
+Route::get('list', function () {
+    return view('list');
+});
 Route::get('test', function () {
     return view('test');
 });
