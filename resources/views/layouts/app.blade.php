@@ -29,8 +29,8 @@
 <body style="background-color: rgb(225, 231, 231);">
 
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-light  bg-primary bg-gradient shadow-sm fixed-top " style="height: 1.5cm">
-            <div class="container container bg-primary  bg-gradient">
+        <nav class="navbar navbar-expand-lg navbar-light  bg-light bg-gradient shadow-sm fixed-top " style="height: 1.5cm">
+            <div class="container ">
                 <a class="navbar-brand  bg-transparent" href="{{ url('/') }}" style="font-family: 'Zen Tokyo Zoo';">
                     {{ config('app.name') }}
                 </a>
@@ -106,71 +106,3 @@
         </main>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{{--
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="{{ route('login') }}">Connexion</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="{{ route('register') }}">S'inscrire</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item">
-                                <strong href="#" class="active text-dark">
-                                    {{ _('Bienvenue,')}}{{ Auth::user()->nom }}
-                                </strong>
-
-                                //cevr---start
-                                <a href="#" class="active text-dark">
-                                    Id = {{ Auth::user()->id }}
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="active">logout</button>
-                                </form>
-                                //cevr---end
-
-
-                            </li>
-                            <li class="nav-item">
-                                <form  id="logout-form" action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                </form>
-                                <a class="btn"
-                                    href="{{ route('logout') }}"
-                                    onclick="event.preventDefault(); this.previousElementSibling.submit();">
-                                    <i class="nav-icon fas fa-sign-out-alt "></i>
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                    <a class="btn" href="#"><i class="nav-icon fas fa-shopping-cart w-100 h-100"></i></a>
-                            </li>
-                        @endguest
-                    </ul>
-                    --}}

@@ -1,4 +1,4 @@
-@extends('layouts.lay')
+@extends('layout.connect')
 
 @section('content')
 <div class="container">

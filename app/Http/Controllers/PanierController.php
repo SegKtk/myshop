@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-
+use App\Models\Panier;
 
 class PanierController extends Controller
 {
@@ -13,6 +13,11 @@ class PanierController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         //
@@ -88,11 +93,15 @@ class PanierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function addArticle($id_article, $id_user)
+    public function addArticle(Request $request)
     {
-        DB::insert('insert into paniers (id_users, id_articles, quantite) values (?, ?)', [$id_user, $id_article], 1);
-        
-        return view('panier');
+        $id_article = $request->id_article;
+        $id_user = $request->id_user;
+        $articles = DB::select('select * from articles');
+        DB::insert('insert into paniers (id_users, id_articles, quantite) values (?,?,?)', [$id_user, $id_article, 1]);
+
+        return redirect()->route('home');
+       // return view('home', compact('articles'));
     }
 
 

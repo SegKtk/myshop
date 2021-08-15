@@ -1,4 +1,4 @@
-@extends('layouts.lay')
+@extends('layout.connect')
 
 @section('content')
 <div class="container">
@@ -10,7 +10,7 @@
                 <div class="card-body">
                     @if (session('resent'))
                         <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
+                            {{ __('Un lien de vérification vient d\'être envoyé à votre addresse mail .') }}
                         </div>
                     @endif
 
@@ -18,7 +18,7 @@
                     {{ __('Si vous n\'avez pas reçu de mails ') }},
                     <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                         @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('cliquez ici.') }}</button>.
+                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('Cliquez ici.') }}</button>.
                     </form>
                 </div>
             </div>

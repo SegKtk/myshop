@@ -83,7 +83,8 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+        $articles = DB::select('select * from articles where id = ?', [$id]);
+
     }
 
     /**

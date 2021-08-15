@@ -1,8 +1,178 @@
-@extends('layouts.app')
+@extends('layout.app')
 
 @section('content')
 
-<nav style="margin-top: 1cm; " class="border-top border-dark">
+<div class="container" style="margin-top: 2.3cm;">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Categories :</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Tous</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Hommes</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Femmes</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Enfants</a>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+  </nav>
+</div>
+
+
+
+    <div class="container mt-2">
+        <!--Section: Products v.3-->
+        <section class="text-center mb-4">
+            <!--Grid row-->
+            <div class="row ">
+                @foreach ($articles as $article)
+                    <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <!--Card-->
+                    <div class="card">
+                    <!--Card image-->
+                    <div class="">
+                        <img src="{{ $article->photo1}}" class="card-img-top shadow"
+                        class="card-img-top img-fluid" style="height: 15rem;"  alt="image d'article">
+                    </div>
+                    <!--Card image-->
+                    <!--Card content-->
+                    <div class="card-body text-center">
+                        <!--Category & Title-->
+                        <h5>{{ $article->nom }}</h5>
+                        <h4 class="">
+                        <strong>{{ $article->prix}}$</strong>
+                        </h4>
+
+                        <form action="{{ route('addArticle') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="id_article" value="{{ $article->id }}" />
+                                @auth
+                                   <input type="hidden" name="id_user" value="{{ Auth::user()->id }}" />
+                                @else
+                                   <input type="hidden" name="id_user" value="-3" />
+                                @endauth
+                        </form>
+                        <a href="{{ route('addArticle') }}"
+                            onclick="event.preventDefault(); this.previousElementSibling.submit();">
+                            <button type="submit" class="btn btn-dark">
+                            <i class="nav-icon fas fa-cart-plus "> Ajoutez</i>
+                            </button>
+                        </a>
+                        <a href="#">
+                            <button type="button" class="btn btn-secondary " >
+                            Détails
+                        </button>
+                        </a>
+
+                    </div>
+                    <!--Card content-->
+                    </div>
+                    <!--Card-->
+                </div>
+                <!--Grid column-->
+                @endforeach
+
+            </div>
+            <!--Grid row-->
+        </section>
+        <!--Section: Products v.3-->
+
+      <!--Pagination-->
+      <nav class="d-flex justify-content-center wow fadeIn">
+        <ul class="pagination pg-blue">
+
+          <!--Arrow left-->
+          <li class="page-item disabled">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+
+          <li class="page-item active">
+            <a class="page-link" href="#">1
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">2</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">3</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">4</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">5</a>
+          </li>
+
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!--Pagination-->
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{--
+<nav style="margin-top: 2cm; " class="border-top border-dark">
     <div class="nav nav-tabs" id="nav-tab" role="tablist" style="background-color: #8eb0f0de;">
         <button class="nav-link active text-primary fw-bold " id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Tous</button>
         <button class="nav-link text-primary fw-bold" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Hommes</button>
@@ -11,7 +181,6 @@
     </div>
 </nav>
 
-{{--#########################################################################--}}
 <div id="carouselExampleControls" class="carousel slide carousel-dark carousel-fade bg-secondary" data-bs-ride="carousel" >
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -51,11 +220,10 @@
     </button>
 </div>
 
-{{--#########################################################################--}}
 <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
         <div class="row row-cols-3 row-cols-md-5 g-2 p-1"  >
-                @foreach ($articles as $article)
+                @foreach ($articles ?? '' as $article)
                     <div class="col">
                     <div class="card h-100 border-top border-top-1 bg-light">
                         <img src="{{ $article->photo1}}" class="card-img-top img-fluid" style="height: 15rem;"  alt="image d'article">
@@ -100,9 +268,7 @@
     </div>
 
 </div>
-
-
-{{--################################MODAL####################################--}}
+--}}
 
 
 

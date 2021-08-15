@@ -23,10 +23,16 @@ use App\Http\Controllers\PhotoController;
 
 Route::get('/', [App\Http\Controllers\AccueilController::class, 'index']);
 
-//Route::get('panier/{id_user}/add/{')
+Route::post('panier/addArticle', [PanierController::class, 'addArticle'])->name('addArticle');
+
 Route::get('list', function () {
     return view('list');
 });
+
+Route::get('connect', function () {
+    return view('layout.connect');
+});
+
 Route::get('test', function () {
     return view('test');
 });
