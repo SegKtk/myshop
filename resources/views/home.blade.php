@@ -74,10 +74,10 @@
                             <i class="nav-icon fas fa-cart-plus "> Ajoutez</i>
                             </button>
                         </a>
-                        <a href="#">
-                            <button type="button" class="btn btn-secondary " >
-                            Détails
-                        </button>
+                        <a href="{{ route('articles.show', ['article' => $article->id]); }}">
+                            <button type="submit" class="btn btn-secondary " >
+                                Détails
+                            </button>
                         </a>
 
                     </div>

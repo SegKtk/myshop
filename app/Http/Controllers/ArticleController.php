@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Article;
 
 class ArticleController extends Controller
 {
@@ -42,10 +44,14 @@ class ArticleController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function show($id)
     {
-        //
+        $articles = DB::select('select * from articles where id = ?', [$id]);
+        $ctgs = DB::select('select * from categories');
+        $types = DB::select('select * from type_articles');
+
+        return view('ficheProduit', compact('articles','ctgs', 'types'));
     }
 
     /**

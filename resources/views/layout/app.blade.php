@@ -78,7 +78,7 @@
                 @endphp
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Commandes et Retours</a>
+                    <a class="nav-link active fw-bold" aria-current="page" href="#">Commandes et Retours</a>
                     </li>
                     <a href="{{ route('panier.show',['panier' => Auth::user()->id]) }} " class="nav-item ms-2">
                     <button type="button" class="btn btn-dark position-relative" >

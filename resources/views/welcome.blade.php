@@ -18,16 +18,27 @@
         </div>
         <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="{{ asset('images/imm.svg')}}" class="d-block img-fluid" alt="...">
+            <img src="{{ asset('images/imm2.jpg')}}" class="d-block img-fluid" alt="...">
 
             <div class="container">
-            <div class="carousel-caption text-start text-white text-bold">
+            <div class="carousel-caption text-start text-white fw-bold">
                 <div class="col-4 float-start">
                     <img src="{{ asset('images/femme.jpeg')}}" class="img-fluid" alt="...">
                 </div>
-                <h1>Des habits légers</h1>
-                <p>Some representative placeholder content for the first slide of the carousel.</p>
-                <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+                <h1>Découvrez le luxe</h1>
+                <p>Des Habits de grandes marques, des Pantalons hautement stylés, des Chaussures confortables et bien d'autres.</p>
+                <p><a class="btn btn-lg btn-primary" href="{{ route('home') }}">S'inscrire maintenent</a></p>
+            </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{{ asset('images/imm1.jpg')}}" class="d-block img-fluid" alt="...">
+
+            <div class="container mt-0">
+            <div class="carousel-caption text-white fw-bold lead">
+                <h1>Effectuez des achats en un clic</h1>
+                <p>N'ayez pas peur. Nous assurons la sécurité vos achats et même leur livraisons.</p>
+                <p><a class="btn btn-lg btn-primary" href="{{ route('home') }}">Découvrir</a></p>
             </div>
             </div>
         </div>
@@ -35,24 +46,13 @@
             <img src="{{ asset('images/imm.svg')}}" class="d-block img-fluid" alt="...">
 
             <div class="container">
-            <div class="carousel-caption">
+            <div class="carousel-caption text-end text-white fw-bold">
                 <div class="col-4 float-start">
-                    <img src="{{ asset('images/femme.jpeg')}}" class="img-fluid" alt="...">
+                    <img src="{{ asset('images/chaussure1.png')}}" class="img-fluid w-100" alt="...">
                 </div>
-                <h1>Du 100% coton</h1>
-                <p>Some representative placeholder content for the second slide of the carousel.</p>
-                <p><a class="btn btn-lg btn-primary" href="#">Voir plus</a></p>
-            </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="{{ asset('images/imm.svg')}}" class="d-block img-fluid" alt="...">
-
-            <div class="container">
-            <div class="carousel-caption text-end">
-                <h1>Trouvez des habits à votre taille</h1>
-                <p>Some representative placeholder content for the third slide of this carousel.</p>
-                <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+                <h1>Trouvez la paire qui vous convient</h1>
+                <p>Nous vous proposons des chaussures de grandes marques.</p>
+                <p><a class="btn btn-lg btn-primary" href="{{ route('home') }}">Voir plus</a></p>
             </div>
             </div>
         </div>
@@ -70,7 +70,7 @@
 
 
     <div class="text-center">
-        <h2>Nous proposons plusieurs catégories d'articles.</h2><br>
+        <h2>Nous proposons plusieurs catalogues à votre disposition.</h2><br>
     </div>
     <div class="container marketing">
 
@@ -78,32 +78,32 @@
         <div class="row">
         <div class="col-lg-4">
             <picture>
-                <img src="{{ asset('images/femme.jpeg')}}" alt="" class="img-fluid rounded rounded-circle">
+                <img src="{{ asset('images/pantalon.svg')}}" alt="" class="img-fluid rounded rounded-circle" style="height: 15rem;">
             </picture>
 
-
-            <h2>Catalogue Femme</h2>
-            <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-            <p><a class="btn btn-secondary" href="#">Consulter &raquo;</a></p>
+            <h2 class="text-dark fw-bold">Catalogue Pantalon</h2>
+            <p>Vous trouverez des pantalons jeans Lewis avec un design à la mode mais cousus avec du pagne.</p>
+            <p><a class="btn btn-secondary" href="{{ route('home') }}">Consulter &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
             <picture>
-                <img src="{{ asset('images/homme.jpeg')}}" alt="" class="img-fluid rounded rounded-circle">
+                <img src="{{ asset('images/chaussure.svg')}}" alt="" class="img-fluid rounded rounded-circle" style="height: 15rem;">
             </picture>
 
-            <h2>Catalogue Homme</h2>
-            <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
-            <p><a class="btn btn-secondary" href="#">Consulter &raquo;</a></p>
+            <h2 class="text-dark fw-bold">Catalogue Chaussure</h2>
+            <p>Nike, Adidas, Puma, M10... autant de marques de chaussures mis à votre disposition .</p>
+            <p><a class="btn btn-secondary" href="{{ route('home') }}">Consulter &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
             <picture>
-                <img src="{{ asset('images/enfant.jpeg')}}" alt="" class="img-fluid rounded rounded-circle">
+                <img src="{{ asset('images/habits.jpg')}}" alt="" class="img-fluid rounded rounded-circle" style="height: 15rem;">
             </picture>
 
-            <h2>Catalogue Enfant</h2>
-            <p>And lastly this, the third column of representative placeholder content.</p>
-            <p><a class="btn btn-secondary" href="#">Consulter &raquo;</a></p>
+            <h2 class="text-dark fw-bold">Catalogue Habits</h2>
+            <p>Parcourez notre catalogue d'habits de tout genre : tee-shirts, chemises, body. </p>
+            <p><a class="btn btn-dark" href="{{ route('home') }} ">Consulter &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
+
         </div><!-- /.row -->
 
 
@@ -116,40 +116,39 @@
         <div class="container justify-content-center">
             <div class="row lead">
                 <div class="col-4">
-                    <h2 class=" text-decoration-underline">Paiements  fiable & sécurisés</h2>
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam, maiores sed. Tempora consequuntur quo ullam veniam quia eligendi quibusdam asperiores! Aut nulla temporibus consequuntur, omnis earum tempore ipsum sunt asperiores?
+                    <div class="border border-2">
+                        <img src="{{ asset('images/paiement.svg')}}" alt="" class="img-fluid text-center rounded" style="height: 3cm; width:5cm;">
+                    </div>
+
+                    <h2 class=" text-decoration-underline ">Paiements sécurisés</h2>
+                    <p class="text-center">
+                       Un système de paiement fiable et sécurisé pour effectuer tous vos achats. Vous n'avez qu'à choisir votre mode de paiement.
                     </p>
                 </div>
                 <div class="col-4">
-                    <h2 class=" text-decoration-underline">Livraison garantie</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, expedita. Optio obcaecati vero, dignissimos ducimus voluptatem maxime quibusdam natus, labore eos eaque neque et! Doloremque quis consequatur eos ducimus maiores!
+                    <div class="border border-2">
+                        <img src="{{ asset('images/livraison.svg')}}" alt="" class="img-fluid text-center rounded" style="height: 3cm; width:10cm;">
+                    </div>
+                    <h2 class=" text-decoration-underline text-center">Livraison garantie</h2>
+                    <p class="text-center">
+                        Faîtes-vous livrez vos colis en restant chez vous. Le livreur vient avec votre colis bien emballé.
                     </p>
                 </div>
                 <div class="col-4">
-                    <h2 class=" text-decoration-underline">Livraison garantie</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil amet et ullam aut, tenetur, iste magni voluptatibus blanditiis doloribus numquam facere esse beatae soluta reprehenderit harum nam! Dignissimos, accusamus temporibus?
+                    <div class="border border-2">
+                        <img src="{{ asset('images/treat.png')}}" alt="" class="img-fluid text-center rounded" style="height: 3cm;">
+                    </div>
+                    <h2 class=" text-decoration-underline text-center">Suivi des commandes</h2>
+                    <p class="text-center">
+                       Soignez informez de l'évolution de votre commande. Nous vous envoyons des mails de notifications jusqu'à livraison.
                     </p>
                 </div>
             </div>
 
         </div>
-        <div class="row featurette">
-        <div class="col-md-7">
-            <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-            <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
-        </div>
-        <div class="col-md-5">
-            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-
-        </div>
-        </div>
-
 
         <hr class="featurette-divider">
-
+        {{--
         <div class="row featurette">
         <div class="col-md-7">
             <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
@@ -166,6 +165,7 @@
             <img src="{{ asset('storage/articles/01.jpg')}}" alt="" class="img-fluid d-block w-100">
         </div>
         </div>
+        --}}
 
         <hr class="featurette-divider">
 

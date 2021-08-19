@@ -4,6 +4,8 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <meta http-equiv="refresh" content="30"> For refresh after 30 seconds -->
     <title>Seg-Shop | Dashbord</title>
 
     <!-- Google Font: Source Sans Pro -->
@@ -20,7 +22,6 @@
 
     <!-- Logo Site -->
     <link rel="icon" type="image/svg" sizes="16x16" href="{{ config('public_path()')."/images/icons/s.svg" }}">
-
 
 
     <!-- --------------------------------------------------------------- -->

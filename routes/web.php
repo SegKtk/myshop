@@ -25,12 +25,8 @@ Route::get('/', [App\Http\Controllers\AccueilController::class, 'index']);
 
 Route::post('panier/addArticle', [PanierController::class, 'addArticle'])->name('addArticle');
 
-Route::get('list', function () {
-    return view('list');
-});
-
-Route::get('connect', function () {
-    return view('layout.connect');
+Route::get('fiche', function () {
+    return view('ficheProduit');
 });
 
 Route::get('test', function () {
