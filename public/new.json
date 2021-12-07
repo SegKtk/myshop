@@ -1,0 +1,35 @@
+{
+    "data": {
+        "1001": {
+            "name": "Bottes de vitesse",
+            "description": "<groupLimit>Limité à 1 paire de bottes.</groupLimit><br><br><unique>Propriété passive UNIQUE - Déplacements améliorés :</unique> +25 vitesse de déplacement",
+            "image": {
+                "full": "1001.png",
+                "sprite": "item0.png",
+                "group": "item",
+                "x": 0,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "1002": {
+            "name": "Bottes de promenade",
+            "description": "<groupLimit>Limité à 2 paires de bottes.</groupLimit><br><br><unique>Propriété passive UNIQUE - Déplacements améliorés :</unique> +25 vitesse de déplacement",
+            "image": {
+                "full": "1002.png",
+                "sprite": "item0.png",
+                "group": "item",
+                "x": 0,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        }
+    },
+    "Commande0": {
+        "id_article": 45,
+        "qte": 78,
+        "TOTAL": 472158
+    }
+}
