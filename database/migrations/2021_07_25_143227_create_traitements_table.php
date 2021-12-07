@@ -17,11 +17,12 @@ class CreateTraitementsTable extends Migration
             $table->foreignId('id_commande')->constrained('commandes');
             $table->boolean('confirmation')->default('false');
             $table->date('dateConfirmation')->nullable('true');
+            $table->boolean('preparation')->default('false');
             $table->boolean('firstSend')->default('false');
             $table->date('dateFS')->nullable('true');
             $table->boolean('secondSend')->default('false');
             $table->date('dateSS')->nullable('true');
-            $table->boolean('estLiivre')->default('false');
+            $table->boolean('estLivre')->default('false');
             $table->date('dateEL')->nullable('true');
 
         });

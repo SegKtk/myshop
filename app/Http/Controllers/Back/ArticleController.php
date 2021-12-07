@@ -40,6 +40,7 @@ class ArticleController extends Controller
     {
         $article = new Article;
         $x = DB::table('articles')->count();
+        
 
         $article->nom = $request->input('nom');
         $article->prix = $request->input('prix');
@@ -57,7 +58,6 @@ class ArticleController extends Controller
         //$xx = $article->type_articles;
         //$article1 = $request->all();
 
-
         $request->file('photo1')->storeAs(
             'articles',
             $x.'1.'.$ext1,
@@ -68,6 +68,7 @@ class ArticleController extends Controller
             $x.'2.'.$ext2,
             'public'
         );
+
 
         $article->save();
 
@@ -83,7 +84,7 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        
+
 
     }
 

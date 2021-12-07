@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Comment;
 use App\Models\Article;
+
 
 class ArticleController extends Controller
 {
@@ -44,14 +46,27 @@ class ArticleController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */ 
+     */
     public function show($id)
     {
+        $comments = DB::select('select * from comments where id_articles =' . $id);
+        $users = DB::select('select * from users');
+        $nbr_avis = 0;
+
+        foreach ($comments as $c) {
+            $nbr_avis++;
+        }
+
         $articles = DB::select('select * from articles where id = ?', [$id]);
+        foreach ($articles as $a) {
+            $categorie = $a->id_categorie;
+        }
+        $similar_article = DB::select('select * from articles where id_categorie = '.$categorie.' order by random() limit 4');
         $ctgs = DB::select('select * from categories');
         $types = DB::select('select * from type_articles');
 
-        return view('ficheProduit', compact('articles','ctgs', 'types'));
+
+        return view('ficheProduit', compact('articles','ctgs', 'types','comments', 'users', 'nbr_avis','similar_article'));
     }
 
     /**

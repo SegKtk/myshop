@@ -14,9 +14,10 @@ class CreateCommentsTable extends Migration
     public function up()
     {
         Schema::create('comments', function (Blueprint $table) {
+            $table->integer('notes')->default(5);
             $table->text('avis');
             $table->foreignId('id_users')->constrained('users');
-            $table->foreignId('id_categorie')->constrained('articles');
+            $table->foreignId('id_articles')->constrained('articles');
             $table->timestamps();
         });
     }

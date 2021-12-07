@@ -17,7 +17,6 @@ class CreateCommandesTable extends Migration
             $table->id();
             $table->double('prix_total');
             $table->foreignId('id_users')->constrained('users');
-            $table->foreignId('id_paniers')->constrained('paniers');
             $table->timestamps();
         });
     }

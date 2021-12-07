@@ -16,7 +16,12 @@ class UserController extends Controller
     {
         $user = DB::select('select * from users');
 
-        return view('list')->with('client', $user); 
+        return view('list')->with('client', $user);
+    }
+
+    public function getusers(){
+        
+        return DB::select('select * from users');
     }
 
     /**

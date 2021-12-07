@@ -52,13 +52,46 @@ class PanierController extends Controller
      */
     public function show($id)
     {
-        $panier = DB::table('paniers')
-            ->where('id',$id)
-            ->count();
-        $panier_articles = DB::table('paniers')
-            ->where('id', $id);
+        $lists = array();// Va contenir la liste des articles dans un panier
+        $STT = 0;
+        $count = DB::table('paniers')
+            ->where('id_users',$id)
+            ->count(); //le nombre d'articles dans un panier
 
-        return view('panier', compact('panier'));
+        $exist = DB::select('select * from commandes where id_users = '.$id);
+        if ($exist) {
+            $existe = true;
+        }
+        else {
+            $existe = false;
+        }
+        $panier_articles = DB::select('select * from paniers where id_users = '.$id);
+
+        $articles = DB::select('select * from articles');
+
+        foreach ($panier_articles as $panier) {
+            foreach ($articles as $a) {
+                if ($panier->id_articles == $a->id) {
+                    array_push($lists,$a);
+                }
+            }
+        }
+        foreach ($lists as $list) {
+            foreach ($panier_articles as $pa) {
+                if ($pa->id_articles == $list->id) {
+                    $STT += $list->prix * $pa->quantite;
+                    break;
+                }
+
+            }
+        }
+        /*
+        foreach ($lists as $list) {
+            $STT += $list->prix;
+        }*/
+
+
+        return view('panier', compact('count','lists','STT','panier_articles','existe'));
 
     }
 
@@ -84,7 +117,12 @@ class PanierController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $panier_articles = DB::select('select * from paniers where id_users = ?',[$id]);
+
+        foreach ($panier_articles as $pa) {
+            DB::update('update paniers set quantite = ? where id_articles = ?', [$request->input($pa->id_articles), $pa->id_articles]);
+        }
+        return redirect()->back();
     }
 
     /**
@@ -97,12 +135,54 @@ class PanierController extends Controller
     {
         $id_article = $request->id_article;
         $id_user = $request->id_user;
-        $articles = DB::select('select * from articles');
-        DB::insert('insert into paniers (id_users, id_articles, quantite) values (?,?,?)', [$id_user, $id_article, 1]);
 
-        return redirect()->route('home');
-       // return view('home', compact('articles'));
+        $exist = DB::select('select * from paniers where id_users ='.$id_user.' and id_articles ='. $id_article);
+
+        foreach ($exist as $e) {
+            $x = $e->quantite;
+        }
+
+        if ($exist) {
+            $c = $x + 1;
+            DB::update('update paniers set quantite = '.$c.' where id_articles = '.$id_article.' and id_users = '.$id_user);
+        }
+        if(!$exist){
+            DB::insert('insert into paniers (id_users, id_articles, quantite) values (?,?,?)', [$id_user, $id_article, 1]);
+        }
+
+        return redirect()->back();
     }
 
+    public function adds(Request $request)
+    {
+        $id_article = $request->id_article;
+        $id_user = $request->id_user;
+        $nbre = $request->nbre;
+
+        $exist_dja = DB::select('select * from paniers where id_users =' . $id_user . ' and id_articles =' . $id_article);
+
+
+        if ($exist_dja) {
+            DB::update('update paniers set quantite = ' . $nbre . ' where id_articles = ' . $id_article . ' and id_users = ' . $id_user);
+        }
+        if (!$exist_dja) {
+            DB::insert('insert into paniers (id_users, id_articles, quantite) values (?,?,?)', [$id_user, $id_article, $nbre]);
+        }
+
+        return redirect()->back();;
+    }
+
+    public function erasePanier($id){
+
+        Panier::where('id_users', $id)->delete();
+        return redirect()->route('panier.show',[$id]);
+    }
+
+    public function deleteInPanier($id, $id_a){
+
+        DB::delete('delete from paniers where id_users = '.$id.' and id_articles = '.$id_a);
+        return redirect()->route('panier.show', [$id]);
+
+    }
 
 }
